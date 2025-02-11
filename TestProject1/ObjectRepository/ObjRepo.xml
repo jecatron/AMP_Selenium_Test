@@ -1,0 +1,8 @@
+﻿<TestRepo>
+
+  <Element name="username" type="XPath">//*[@id="username"]</Element>
+  <Element name="password" type="XPath">//*[@id="password"]</Element>
+  <Element name="LoginButton" type="XPath">//*[@id="loginForm"]/button</Element>
+  <Element name="successfulLogin" type="XPath">/html/body/script/text()</Element>
+
+</TestRepo>
