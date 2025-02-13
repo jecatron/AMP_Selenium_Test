@@ -1,23 +1,41 @@
 ﻿using AventStack.ExtentReports;
-using NUnit.Framework;
+using AventStack.ExtentReports.Reporter;
+using System;
+using System.IO;
 
-namespace TestProject1.Reporting
+namespace FlightBookingTest.Reports
 {
-    [SetUpFixture]
-    public class ExtentReportSetup
+    public static class ExtentReportSetup
     {
-        public static ExtentReports Extent;
+        private static ExtentReports _extent;
+        private static ExtentSparkReporter _sparkReporter;
+        private static readonly string reportPath = Path.Combine(Directory.GetCurrentDirectory(),
+            $"TestReport_{DateTime.Now:yyyyMMdd_HHmmss}.html");
 
-        [OneTimeSetUp]
-        public void GlobalSetup()
+        public static void InitializeReport()
         {
-            Extent = ExtentManager.GetInstance();
+            if (_extent == null)
+            {
+                _sparkReporter = new ExtentSparkReporter(reportPath);
+                _extent = new ExtentReports();
+                _extent.AttachReporter(_sparkReporter);
+            }
         }
 
-        [OneTimeTearDown]
-        public void GlobalTearDown()
+        public static ExtentReports Extent
         {
-            Extent.Flush();
+            get
+            {
+                if (_extent == null)
+                    throw new NullReferenceException("ExtentReports is not initialized. Call InitializeReport() first.");
+
+                return _extent;
+            }
+        }
+
+        public static void FlushReport()
+        {
+            _extent?.Flush();
         }
     }
 }

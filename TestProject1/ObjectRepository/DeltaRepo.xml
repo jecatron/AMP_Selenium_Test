@@ -1,0 +1,33 @@
+﻿<TestRepo>
+
+  <!-- Test Elements-->
+  <Element name="Origin" type="XPath">//*[@id="fromAirportName"]</Element>
+  <Element name="AirportSearch" type="XPath">//*[@id="search_input"]</Element>
+  <Element name="Destination" type="XPath">//*[@id="toAirportName"]</Element>
+  <Element name="TripType" type="XPath">//*[@id="selectTripType-val"]</Element>
+  <Element name="RoundTrip" type="XPath">  //*[@id="ui-list-selectTripType0"]</Element>
+  <Element name="DepartureDate" type="XPath">//*[@id="calDepartLabelCont"]</Element>
+  <Element name="Calendar" type="XPath">//*[@id="booking"]/form/div[1]/div/div[1]/div[1]/div[3]/date-selection-view/div/div/div/div/div[4]/div</Element>
+  <Element name="CalendarDone" type="XPath">//*[@id="booking"]/form/div[1]/div/div[1]/div[1]/div[3]/date-selection-view/div/div/div/div/div[4]/div/div[3]/button[2]</Element>
+  <Element name="Passengers" type="XPath">//*[@id="passengers-val"]</Element>
+  <Element name="OnePassenger" type="XPath">//*[@id="ui-list-passengers0"]</Element>
+  <Element name="Search" type="XPath">//*[@id="btnSubmit"]</Element>
+  <Element name="Language" type="XPath">//*[@id="lacation-list-container"]/li[5]</Element>
+  <Element name="RefundableFlightsOnly" type="XPath">//*[@id="refundableFlightsOnly"]</Element> 
+  <Element name="AdvancedSearch" type="XPath">//*[@id="adv-search"]</Element>
+  <Element name="BestFares" type="XPath">//*[@id="faresFor-val"]</Element>
+  <Element name="MainCabin" type="XPath">//*[@id="ui-list-faresFor1"]</Element>
+  
+  <!-- Validation Elements-->
+  <Element name="DestinationTab" type ="XPath">//*[@id="main_nav"]/div[3]</Element>
+  <Element name="TripCities" type ="XPath">//*[@id="main_nav"]</Element>
+  <Element name="departureCity" type ="XPath">//*[@id="fromAirportName"]/span[1]</Element>
+  <Element name="arrivalCity" type ="XPath">//*[@id="toAirportName"]/span[1]</Element>
+  <Element name="ValTripType" type="XPath">//*[@id="selectTripType-val"]</Element>
+  <Element name="ValDepartDate" type="XPath">//*[@id="calDepartLabelCont"]/span[2]</Element>
+  <Element name="ValReturnDate" type="XPath">//*[@id="calReturnLabelCont"]/span[2]</Element>
+  <Element name="ValPassengerCount" type="XPath">//*[@id="passengers-val"]</Element>
+  <Element name="TripDates" type="XPath">//*[@id="main_nav"]/div[7]/a/span</Element>
+  <Element name="ValTripPassengers" type="XPath">//*[@id="main_nav"]/div[9]/a/span</Element>
+
+</TestRepo>

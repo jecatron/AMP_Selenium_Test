@@ -48,6 +48,9 @@ namespace TestProject1.Reporting
             // Optionally, add system information
             _extent.AddSystemInfo("Environment", "QA");
             _extent.AddSystemInfo("User", "Chester Tester");
+
         }
+
+
     }
 }
