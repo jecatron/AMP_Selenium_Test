@@ -177,7 +177,8 @@ namespace SeleniumProject.Pages
             string returnDate = Driver.FindElement(ValReturnDate).Text;
             string passengers = Driver.FindElement(ValTripPassemgers).Text;
 
-            pageData["originCity"] = originCity; // Store the extracted value
+            // Store the extracted value
+            pageData["originCity"] = originCity; 
             pageData["destinationCity"] = destinationCity;
             pageData["tripType"] = tripType;
             pageData["departDate"] = departDate;
