@@ -69,7 +69,7 @@ namespace SeleniumProject.Tests
             //Search for Flights
             _testPage.ClickSearchButton();
 
-            //Validate Flight page is displayed
+            //Validate Flight page is displayed and Data matches input
             JObject tripData = _testPage.GetBookingPageData();
             string departureCity = tripData["originCity"].ToString();
             string arrivalCity = tripData["destinationCity"].ToString();
