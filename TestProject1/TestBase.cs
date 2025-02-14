@@ -39,7 +39,7 @@ namespace TestProject1
         [SetUp]
         public void Setup()
         {
-            // Initialize WebDriver (modify as needed for your tests)
+            // Initialize WebDriver 
             new DriverManager().SetUpDriver(new ChromeConfig());
             driver = new ChromeDriver();  // Initialize the global driver property
             driver.Manage().Window.Maximize(); // Maximize the browser window
@@ -69,7 +69,8 @@ namespace TestProject1
 
 
                 // Log the browser console logs
-                LogBrowserConsoleLogs();  // Capture and log browser logs
+                // Capture and log browser logs
+                LogBrowserConsoleLogs(); 
 
                 // Always quit the driver
                 if (driver != null)
@@ -84,7 +85,8 @@ namespace TestProject1
             
         }
 
-        [OneTimeTearDown] // This runs once after the entire test suite
+        // This runs once after the entire test suite
+        [OneTimeTearDown] 
         public void GlobalTearDown()
         {
             // Flush and close the report after all tests are completed

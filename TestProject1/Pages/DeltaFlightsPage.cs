@@ -20,7 +20,6 @@ namespace SeleniumProject.Pages
         private readonly By AirportSearch;
         private readonly By Search;
         private readonly By DepartureDate;
-        private readonly By ReturnDate;
         private readonly By Passengers;
         private readonly By TripType;
         private readonly By LanguagePreference;
@@ -84,11 +83,22 @@ namespace SeleniumProject.Pages
 
         public void LanguagePreferenceScreen()
         {
-            if (Driver.FindElement(LanguagePreference).Displayed)
+            try
             {
-                Driver.FindElement(LanguagePreference).Click();
+                if (Driver.FindElement(LanguagePreference).Displayed)
+                {
+                    Driver.FindElement(LanguagePreference).Click();
+                }
             }
-            
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Language preference element not found.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while clicking the LanguagePreference");
+            }
+
         }
 
 
@@ -112,15 +122,20 @@ namespace SeleniumProject.Pages
         // Encapsulated methods for flight search actions
         public void EnterOrigin(string origin)
         {
-            Driver.FindElement(Origin).SendKeys(origin);
-            Driver.FindElement(AirportSearch).Click();   
+            //Hard Waits added because the test is moving fater than the page can load
+            //Once an element that is contstant is determined add an Explicit Wait
+            Thread.Sleep(700);
+            Driver.FindElement(Origin).Click();
+            Driver.FindElement(AirportSearch).SendKeys(origin);
+            Thread.Sleep(500);
             Driver.FindElement(AirportSearch).SendKeys(Keys.Enter);
         }
         public void EnterDestination(string destination)
         {
-            Thread.Sleep(1000);
-            Driver.FindElement(Destination).SendKeys(destination);
-            Driver.FindElement(AirportSearch).Click();
+            Thread.Sleep(500);
+            Driver.FindElement(Destination).Click();
+            Driver.FindElement(AirportSearch).SendKeys(destination);
+            Thread.Sleep(500);
             Driver.FindElement(AirportSearch).SendKeys(Keys.Enter);
 
 

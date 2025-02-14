@@ -58,7 +58,7 @@ namespace SeleniumProject.Tests
             _testPage.EnterOrigin(origin);
             //Enter Destination City
             _testPage.EnterDestination(destination);
-            //Validate Trip Type
+            //Select Trip Type
             _testPage.SelectRoundTrip();
             //Enter Trip Dates
             _testPage.EnterFlightDates();
@@ -80,6 +80,7 @@ namespace SeleniumProject.Tests
             else
                 test.Log(Status.Fail, "Departure City does not Match input Value");
             Assert.That(arrivalCity, Is.EqualTo(destination));
+
             if (arrivalCity == destination)
                 test.Log(Status.Pass, "Arrival City Matches input Value");
             else
@@ -87,21 +88,25 @@ namespace SeleniumProject.Tests
             string expectedDepartDate = DateTime.Now.AddDays(2).ToString("MMM dd");
             string expectedReturnDate = DateTime.Now.AddDays(5).ToString("MMM dd");
             Assert.That(tripData["departDate"].ToString(), Is.EqualTo(expectedDepartDate));
+
             if (tripData["departDate"].ToString() == expectedDepartDate)
                 test.Log(Status.Pass, "Departure Date is 2 days from today");
             else
                 test.Log(Status.Fail, "Departure Date is not 2 days from today");
             Assert.That(tripData["returnDate"].ToString(), Is.EqualTo(expectedReturnDate));
+
             if (tripData["returnDate"].ToString() == expectedReturnDate)
                 test.Log(Status.Pass, "Return Date is 3 days from today");
             else
                 test.Log(Status.Fail, "Return Date is not 3 days from today");
             Assert.That(tripData["tripType"].ToString(), Is.EqualTo("Round Trip"));
+
             if (tripData["tripType"].ToString() == "Round Trip")
                 test.Log(Status.Pass, "Trip Type is Round Trip");
             else
                 test.Log(Status.Fail, "Trip Type is not Round Trip");
             Assert.That(tripData["passengers"].ToString(), Is.EqualTo("1 Passenger"));
+
             if (tripData["passengers"].ToString() == "1 Passenger")
                 test.Log(Status.Pass, "Passenger Count is 1");
             else

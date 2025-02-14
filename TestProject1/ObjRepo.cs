@@ -41,21 +41,21 @@ namespace SeleniumProject
         {
             try
             {
-                Console.WriteLine($"🔍 Searching for element: {elementName}");
+                Console.WriteLine($"Searching for element: {elementName}");
 
                 var element = _root.Descendants("Element")
                                    .FirstOrDefault(e => e.Attribute("name")?.Value == elementName);
 
                 if (element == null)
                 {
-                    Console.WriteLine($"🚨 ERROR: Element '{elementName}' not found in XML repository.");
-                    throw new ArgumentException($"❌ ERROR: Element '{elementName}' not found in the XML repository.");
+                    Console.WriteLine($"ERROR: Element '{elementName}' not found in XML repository.");
+                    throw new ArgumentException($"ERROR: Element '{elementName}' not found in the XML repository.");
                 }
 
                 string locatorType = element.Attribute("type")?.Value ?? "XPath";
                 string locatorValue = element.Value.Trim();
 
-                Console.WriteLine($"✅ Found element → Name: {elementName}, Type: {locatorType}, Value: {locatorValue}");
+                Console.WriteLine($"Found element → Name: {elementName}, Type: {locatorType}, Value: {locatorValue}");
 
                 return locatorType.ToLower() switch
                 {
@@ -67,22 +67,22 @@ namespace SeleniumProject
                     "partiallinktext" => By.PartialLinkText(locatorValue),
                     "tagname" => By.TagName(locatorValue),
                     "classname" => By.ClassName(locatorValue),
-                    _ => throw new ArgumentException($"❌ ERROR: Locator type '{locatorType}' is not supported.")
+                    _ => throw new ArgumentException($"ERROR: Locator type '{locatorType}' is not supported.")
                 };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"🚨 EXCEPTION in GetByLocator('{elementName}'): {ex.Message}");
+                Console.WriteLine($"EXCEPTION in GetByLocator('{elementName}'): {ex.Message}");
                 throw;
             }
         }
 
         public void DebugPrintElements()
         {
-            Console.WriteLine("🔎 Elements Found in XML Repository:");
+            Console.WriteLine("Elements Found in XML Repository:");
             foreach (var element in _root.Descendants("Element"))
             {
-                Console.WriteLine($"➡ Name: {element.Attribute("name")?.Value}, " +
+                Console.WriteLine($"Name: {element.Attribute("name")?.Value}, " +
                                   $"Type: {element.Attribute("type")?.Value}, " +
                                   $"Value: {element.Value}");
             }
